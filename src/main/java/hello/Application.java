@@ -26,9 +26,14 @@ public class Application {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
+			
+			/*String quote1 = restTemplate.getForObject(
+					"https://sonarcloud.io/api/rules/show?key=squid:S1219", String.class);
+			log.info(quote1);*/
+			
 			Quote quote = restTemplate.getForObject(
-					"http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
-			log.info(quote.toString());
+					"https://sonarcloud.io/api/rules/show?key=squid:S1219", Quote.class);
+			log.info(quote.getRule().getKey() + " - " + quote.getRule().getName());
 		};
 	}
 }
