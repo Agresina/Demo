@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class SonarService {
 	
-	String ncloc_uri = "http//192.168.56.101:32768/api/measures/component?metricKeys=ncloc&componentKey=com.example:demo";
+	String ncloc_uri = "http://192.168.56.101:32768/api/measures/component?metricKeys=ncloc&componentKey=com.example:demo";
 	
 	public Metric getNcloc() {
 		RestTemplate rt = new RestTemplate();
