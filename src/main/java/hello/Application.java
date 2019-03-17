@@ -31,9 +31,13 @@ public class Application {
 					"https://sonarcloud.io/api/rules/show?key=squid:S1219", String.class);
 			log.info(quote1);*/
 			
-			Quote quote = restTemplate.getForObject(
+			/*Quote quote = restTemplate.getForObject(
 					"https://sonarcloud.io/api/rules/show?key=squid:S1219", Quote.class);
-			log.info(quote.getRule().getKey() + " - " + quote.getRule().getName());
+			log.info(quote.getRule().getKey() + " - " + quote.getRule().getName());*/
+			
+			Metric metric = restTemplate.getForObject(
+					"https://sonarcloud.io/api/measures/component?metricKeys=ncloc&componentKey=com.example:demo", Metric.class);
+			log.info(metric.getComponent().getKey() + " - " + metric.getComponent().getName() + " - " + metric.getComponent().getDescription());
 		};
 	}
 }
